@@ -6,15 +6,20 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:31:22 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/20 13:05:45 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/20 14:55:42 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 # include "MLX42.h"
 # include "../GET_NEXT_LINE/get_next_line.h"
 # include "../Libft/libft.h"
+# include "../ft_printf/ft_printf.h"
 # define PATH_GRASS "./img/grass_128.png"
 # define PATH_WATER "./img/water_128.png"
 # define PATH_SHIBA "./img/shiba_128.png"
@@ -24,8 +29,9 @@
 
 typedef struct s_player
 {
-	int				x;
-	int				y;
+	int			x;
+	int			y;
+	int			movements;
 }	t_player;
 
 enum e_tiletype
@@ -68,5 +74,8 @@ void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
+
+//map verify
+int		map_verify(int src);
 
 #endif

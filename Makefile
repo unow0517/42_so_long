@@ -6,13 +6,13 @@
 #    By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 20:23:52 by yowoo             #+#    #+#              #
-#    Updated: 2024/03/14 19:30:37 by yowoo            ###   ########.fr        #
+#    Updated: 2024/03/20 14:56:12 by yowoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = cc
-SRC = $(wildcard *.c GET_NEXT_LINE/*.c Libft/*.c )
+SRC = $(wildcard *.c GET_NEXT_LINE/*.c Libft/*.c ft_printf/*.c)
 OBJ = $(SRC:.c=.o)
 RM = rm -f
 

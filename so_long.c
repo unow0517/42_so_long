@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
+
 #include "include/so_long.h"
 #define WIDTH 1920
 #define HEIGHT 1080
@@ -34,18 +31,18 @@ int	iswall(t_tile *map, int x, int y)
 	return (0);
 }
 
-void	my_keyhook(mlx_key_data_t keydata, void* param)
+void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_game		*game;
 
 	game = param;
-	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
+	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 		move_up(game);
-	else if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
 		move_down(game);
-	else if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
 		move_left(game);
-	else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 		move_right(game);
 }
 
@@ -90,6 +87,7 @@ int32_t	main(int argc, char **argv)
 	}
 
 	src = open(argv[1], O_RDONLY);
+	// printf("verify:%d", map_verify(src));
 	draw_ber(src, game);
 	mlx_key_hook(mlx, &my_keyhook, game);
 	mlx_loop(mlx);

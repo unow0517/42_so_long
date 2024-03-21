@@ -92,8 +92,6 @@ int32_t	main(int argc, char **argv)
 		game->player = player;
 	}
 	src = open(argv[1], O_RDONLY);
-	// printf("verify:%d", map_verify(src));
-	// printf("draw: %d",draw_ber(src, game));
 	if (draw_ber(src, game) == -1)
 		ft_error("Error\nMap is not valid");
 	mlx_key_hook(mlx, &my_keyhook, game);

@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:31:22 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/21 12:42:50 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/21 13:47:58 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,12 @@ typedef struct s_game
 
 }	t_game;
 
-//so long
+//so_long
+void	render_tile(t_game *game, char c, int x, int y);
+
+//draw_ber
 int		draw_ber(int src, t_game *game);
+
 // void	error(void);
 int		path_to_window(mlx_t *mlx, char *path, int x, int y);
 int		iswall(t_tile *map, int x, int y);
@@ -67,7 +71,6 @@ t_tile	*ft_map_lstnew(char c);
 void	ft_map_lstadd_back(t_tile **lst, t_tile *new);
 t_tile	*ft_map_lstlast(t_tile *lst);
 void	tile_to_map_list(char c, t_tile **list, int x, int y);
-void	render_tile(t_game *game, char c, int x, int y);
 
 //moves 
 void	move_up(t_game *game);
@@ -76,6 +79,11 @@ void	move_left(t_game *game);
 void	move_right(t_game *game);
 
 //map verify
-// int		map_verify(int src);
+int		map_verify(char *str, char *laststr, int len);
+// char	*map_verify(int src, char *str, int len);
+char	*map_verify_and_gnl(int src, char *str, int len);
+
+int		end_wall_check(char *str, int len);
+
 
 #endif

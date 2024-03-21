@@ -4,11 +4,17 @@
 #define HEIGHT 1080
 #define BPP sizeof(int32_t)
 
-void	error(void)
+void	ft_error(char *str)
 {
-	puts(mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);
+	ft_putendl_fd(str, 1);
+	exit (0);
 }
+
+// void	error(void)
+// {
+// 	puts(mlx_strerror(mlx_errno));
+// 	exit(EXIT_FAILURE);
+// }
 
 int	iswall(t_tile *map, int x, int y)
 {
@@ -79,16 +85,17 @@ int32_t	main(int argc, char **argv)
 	player = malloc(sizeof(t_player));
 	mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
 	if (!mlx)
-		error();
+		ft_error("Error\nCannot initialize a map");
 	else
 	{
 		game->mlx = mlx;
 		game->player = player;
 	}
-
 	src = open(argv[1], O_RDONLY);
 	// printf("verify:%d", map_verify(src));
-	draw_ber(src, game);
+	// printf("draw: %d",draw_ber(src, game));
+	if (draw_ber(src, game) == -1)
+		ft_error("Error\nMap is not valid");
 	mlx_key_hook(mlx, &my_keyhook, game);
 	mlx_loop(mlx);
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:31:22 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/20 14:55:42 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/21 12:42:50 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ typedef struct s_game
 }	t_game;
 
 //so long
-void	draw_ber(int src, t_game *game);
-void	error(void);
+int		draw_ber(int src, t_game *game);
+// void	error(void);
 int		path_to_window(mlx_t *mlx, char *path, int x, int y);
 int		iswall(t_tile *map, int x, int y);
 
@@ -76,6 +76,6 @@ void	move_left(t_game *game);
 void	move_right(t_game *game);
 
 //map verify
-int		map_verify(int src);
+// int		map_verify(int src);
 
 #endif

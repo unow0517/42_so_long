@@ -6,75 +6,65 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:31:21 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/20 14:15:32 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/21 12:04:16 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
 
-int	mid_check(size_t len, char *gnl)
-{
-	if (ft_strlen(gnl) != len)
-		return (-1);
-	if (*gnl != 1)
-		return (-1);
-	while (*gnl != '\n')
-	{
-		if (*(gnl + 1) == '\n' && *gnl != '1')
-			return (-1);
-		gnl++;
-	}
-	return (0);
-}
+// int	end_wall_check(char *str, int len)
+// {
+// 	int	i;
 
-int	last_check(size_t len, char *gnl)
-{
-	if (ft_strlen(gnl) != len)
-		return (-1);
-	while (*gnl != '\n')
-	{
-		if (*gnl != 1)
-			return (-1);
-		gnl++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (*str != '\n')
+// 	{
+// 		if (*str != 1)
+// 			return (-1);
+// 		str++;
+// 		i++;
+// 	}
+// 	if (i != len)
+// 		return (-1);
+// 	return (0);
+// }
 
-int	map_verify(int src)
-{
-	char	*gnl;
-	int		width;
-	char	*lastgnl;
+// int	mid_wall_check(char *str)
+// {
+// 	int	i;
 
-	width = 0;
-	if (!src)
-		return (0);
-	gnl = get_next_line(src);
-	while (*gnl != '\n')
-	{
-		if (*gnl != 1)
-			return (-1);
-		width++;
-		gnl++;
-	}
-	width = width - 1;
-	gnl = get_next_line(src);
-	while (gnl != 0)
-	{
-		if (!(mid_check(width, gnl)))
-			return (-1);
-		lastgnl = gnl;
-		gnl = get_next_line(src);
-	}
-	if (gnl == 0)
-	{
-		if (!(last_check(width, lastgnl)))
-			return (-1);
-		else
-			return (0);
-	}
-	return (0);
-}
+// 	i = 0;
+// 	if (str[i] != 1)
+// 		return (-1);
+// 	while (str[i] != '\n')
+// 	{
+// 		i++;
+// 		if (str[i] == '\n' && str[i - 1] != 1)
+// 			return (-1);
+// 	}
+// 	return (0);
+// }
 
+// int	map_verify(char *str)
+// {
+// 	int		width;
+// 	char	*gnl;
+// 	char	*lastgnl;
 
-
+// 	if (!str)
+// 		return (-1);
+// 	width = ft_strlen(gnl);
+// 	if (end_wall_check(gnl, width) == -1)
+// 		return (-1);
+// 	while (gnl)
+// 	{
+// 		lastgnl = gnl;
+// 		gnl = get_next_line(src);
+// 		if (!gnl)
+// 			if (wall_check(lastgnl) == -1)
+// 				return (-1);
+// 		if (mid_wall_check(gnl) == -1)
+// 			return (-1);
+// 	}
+// 	return (0);
+// }

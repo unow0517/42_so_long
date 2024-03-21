@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:59:59 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/20 14:58:58 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/21 11:27:35 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	move_down(t_game *game)
 		ft_printf("%d\n", player->movements + 1);
 		(player->movements)++;
 	}
-
 }
 
 void	move_left(t_game *game)

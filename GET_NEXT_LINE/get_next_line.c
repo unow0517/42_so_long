@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 09:17:13 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/20 11:52:32 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/21 11:51:44 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ char	*get_next_line(int fd)
 // 	src = open("thisistest.txt", O_RDONLY);
 // 	// printf("src:%d", src);
 // 	// // get_next_line(src);
-// 	while (i++ < 3)
+// 	while (i++ < 10)
 // 		printf("result: %s", get_next_line(src));
 // 	// get_next_line(src);
 // 	// printf("output: %s", get_next_line(src));
@@ -141,7 +141,9 @@ char	*get_next_line(int fd)
 // 	// ft_substr(ptr,0,3);
 // 	return (0);
 // }
-//ft_substr in first_piece does not return new pointer address, 
-//so malloc + ft_memcpy is used instead.
-//key point in this Fn = moving memory location with new ptr
-//whenever an action on string is commited.
+
+
+// ft_substr in first_piece does not return new pointer address, 
+// so malloc + ft_memcpy is used instead.
+// key point in this Fn = moving memory location with new ptr
+// whenever an action on string is commited.

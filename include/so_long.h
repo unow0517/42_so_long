@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:31:22 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/21 13:47:58 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/22 20:34:19 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,38 @@ typedef struct s_tile
 	struct s_tile	*next;
 }	t_tile;
 
+typedef struct s_food
+{
+	int	x;
+	int	y;
+}	t_food;
+
+typedef struct s_house
+{
+	int	x;
+	int	y;
+}	t_house;
+
+typedef struct s_grass
+{
+	int				x;
+	int				y;
+	struct s_grass	*next;
+}	t_grass;
+
 typedef struct s_game
 {
 	mlx_t		*mlx;
 	t_player	*player;
 	t_tile		*map;
-
+	t_food		*food;
+	t_house		*house;
+	t_tile		*grass_list;
 }	t_game;
 
 //so_long
 void	render_tile(t_game *game, char c, int x, int y);
+void	ft_error(char *str);
 
 //draw_ber
 int		draw_ber(int src, t_game *game);
@@ -67,10 +89,11 @@ int		path_to_window(mlx_t *mlx, char *path, int x, int y);
 int		iswall(t_tile *map, int x, int y);
 
 //map_functions
-t_tile	*ft_map_lstnew(char c);
+t_tile	*ft_map_lstnew(char c, int x, int y);
 void	ft_map_lstadd_back(t_tile **lst, t_tile *new);
 t_tile	*ft_map_lstlast(t_tile *lst);
 void	tile_to_map_list(char c, t_tile **list, int x, int y);
+// void	tile_to_grass_list(char c, t_tile **list, int x, int y);
 
 //moves 
 void	move_up(t_game *game);
@@ -80,10 +103,12 @@ void	move_right(t_game *game);
 
 //map verify
 int		map_verify(char *str, char *laststr, int len);
-// char	*map_verify(int src, char *str, int len);
 char	*map_verify_and_gnl(int src, char *str, int len);
-
 int		end_wall_check(char *str, int len);
 
+
+//check_file
+void	flood_fill(int x, int y, t_game *game);
+int		is_p_c_e_in_one_map(t_game *game);
 
 #endif

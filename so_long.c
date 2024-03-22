@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/21 16:58:25 by yowoo             #+#    #+#             */
+/*   Updated: 2024/03/22 20:29:56 by yowoo            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "include/so_long.h"
 #define WIDTH 1920
@@ -27,7 +38,7 @@ int	iswall(t_tile *map, int x, int y)
 	{
 		if (tile->x == x && tile->y == y)
 		{
-			if (tile->type == '1')
+			if (tile->type == 1)
 				return (1);
 			else
 				return (0);
@@ -66,9 +77,17 @@ void	render_tile(t_game *game, char c, int x, int y)
 			game->player->y = y;
 		}
 		else if (c == 'C')
+		{
 			path_to_window(game->mlx, PATH_FOOD, x, y);
+			game->food->x = x;
+			game->food->y = y;
+		}
 		else if (c == 'E')
+		{
 			path_to_window(game->mlx, PATH_HOUSE, x, y);
+			game->house->x = x;
+			game->house->y = y;
+		}
 	}
 }
 
@@ -77,23 +96,22 @@ int32_t	main(int argc, char **argv)
 	mlx_t		*mlx;
 	int			src;
 	t_game		*game;
-	t_player	*player;
 
 	if (argc != 2)
 		return (-1);
 	game = malloc(sizeof(t_game));
-	player = malloc(sizeof(t_player));
+	game->player = malloc(sizeof(t_player));
+	game->food = malloc(sizeof(t_food));
+	game->house = malloc(sizeof(t_house));
 	mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
 	if (!mlx)
 		ft_error("Error\nCannot initialize a map");
 	else
-	{
 		game->mlx = mlx;
-		game->player = player;
-	}
 	src = open(argv[1], O_RDONLY);
 	if (draw_ber(src, game) == -1)
 		ft_error("Error\nMap is not valid");
+	is_p_c_e_in_one_map(game);
 	mlx_key_hook(mlx, &my_keyhook, game);
 	mlx_loop(mlx);
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:58:15 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/21 14:10:33 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/22 20:33:41 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	render_and_list(char *gnl, t_game *game, int next_x, int next_y)
 {
+	t_game	*ptr;
+
+	ptr = game;
 	tile_to_map_list(*gnl, &game->map, next_x, next_y);
 	render_tile(game, *gnl, next_x, next_y);
 }
@@ -31,7 +34,7 @@ int	draw_ber(int src, t_game *game)
 	if (!gnl || end_wall_check(gnl, len) == -1)
 		return (-1);
 	next_y = 0;
-	game->map = ft_map_lstnew(*gnl);
+	game->map = ft_map_lstnew(*gnl, 0, 0);
 	while (*gnl != 0)
 	{
 		render_and_list(gnl, game, next_x, next_y);

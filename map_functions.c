@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:47:46 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/22 19:59:40 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/22 23:08:36 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,6 @@ void	tile_to_map_list(char c, t_tile **list, int x, int y)
 	tile->x = x;
 	tile->y = y;
 	ft_map_lstadd_back(list, tile);
-}
-
-void	tile_to_grass_list(char c, t_tile **list, int x, int y)
-{
-	t_tile			*tile;
-
-	if (c == '0')
-	{
-		tile = ft_map_lstnew(c, x, y);
-		tile->type = 0;
-		tile->x = x;
-		tile->y = y;
-		ft_map_lstadd_back(list, tile);
-	}
 }
 
 int	path_to_window(mlx_t *mlx, char *path, int x, int y)

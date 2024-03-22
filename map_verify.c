@@ -6,13 +6,13 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:31:21 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/21 13:33:19 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/22 23:06:39 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
 
-int	mid_wall_check(char *str, int len)
+static int	mid_wall_check(char *str, int len)
 {
 	int	i;
 

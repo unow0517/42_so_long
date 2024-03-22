@@ -6,19 +6,17 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:58:15 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/22 20:33:41 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/22 23:09:58 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
 
-void	render_and_list(char *gnl, t_game *game, int next_x, int next_y)
+static void	render_and_list(char *gnl, t_game *game, int next_x, int next_y)
 {
-	t_game	*ptr;
-
-	ptr = game;
 	tile_to_map_list(*gnl, &game->map, next_x, next_y);
 	render_tile(game, *gnl, next_x, next_y);
+
 }
 
 int	draw_ber(int src, t_game *game)

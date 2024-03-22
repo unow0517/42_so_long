@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:31:22 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/22 23:21:44 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/23 00:07:58 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,15 @@ typedef struct s_game
 }	t_game;
 
 //SO_LONG.C
-int		iswall(t_tile *map, int x, int y);
-void	render_tile(t_game *game, char c, int x, int y);
 void	ft_error(char *str);
+// static void	my_keyhook(mlx_key_data_t keydata, void *param);
+int		iswall(t_tile *map, int x, int y);
+// int32_t	main(int argc, char **argv);
 
 //DRAW_BER.C
-// static void	render_and_list(arguments...)
+// static void	add_object(t_game *game, int x, int y, char c);
+// static void	render_tile(t_game *game, char c, int x, int y);
+// static void	render_and_list(arguments...);
 int		draw_ber(int src, t_game *game);
 
 //MAP_FUNCTIONS.C
@@ -103,16 +106,16 @@ void	move_left(t_game *game);
 void	move_right(t_game *game);
 
 //MAP_VERIFY.C
-// static int	mid_wall_check(char *str, int len)
+// static int	mid_wall_check(char *str, int len);
 int		end_wall_check(char *str, int len);
 int		map_verify(char *str, char *laststr, int len);
 char	*map_verify_and_gnl(int src, char *str, int len);
 
 
 //CHECK_TILE.C
-// static int	is_in_list(int x, int y, t_tile *grass_list)
-// static int	is_coord_grass(int x, int y, t_tile *map)
-// static void	put_in_grass_list(int x, int y, t_tile *grass_list)
+// static int	is_in_list(int x, int y, t_tile *grass_list);
+// static int	is_coord_grass(int x, int y, t_tile *map);
+// static void	put_in_grass_list(int x, int y, t_tile *grass_list);
 void	flood_fill(int x, int y, t_game *game);
 int		is_p_c_e_in_one_map(t_game *game);
 

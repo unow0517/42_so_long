@@ -6,14 +6,13 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:58:25 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/22 23:22:04 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/23 00:43:55 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
 #define WIDTH 1920
 #define HEIGHT 1080
-#define BPP sizeof(int32_t)
 
 void	ft_error(char *str)
 {
@@ -42,7 +41,7 @@ int	iswall(t_tile *map, int x, int y)
 	return (0);
 }
 
-void	my_keyhook(mlx_key_data_t keydata, void *param)
+static void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_game		*game;
 
@@ -55,63 +54,8 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 		move_left(game);
 	else if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 		move_right(game);
-}
-void	add_object(t_game *game, int x, int y, char c)
-{
-	if (c == 'P')
-	{
-		path_to_window(game->mlx, PATH_SHIBA, x, y);
-		game->player->x = x;
-		game->player->y = y;
-		game->player->cnt++;
-	}
-	else if (c == 'C')
-	{
-		path_to_window(game->mlx, PATH_FOOD, x, y);
-		game->food->x = x;
-		game->food->y = y;
-		game->food->cnt++;
-	}
-	else if (c == 'E')
-	{
-		path_to_window(game->mlx, PATH_HOUSE, x, y);
-		game->house->x = x;
-		game->house->y = y;
-		game->house->cnt++;
-	}
-}
-void	render_tile(t_game *game, char c, int x, int y)
-{
-	if (c == '1')
-		path_to_window(game->mlx, PATH_WATER, x, y);
-	else
-	{
-		path_to_window(game->mlx, PATH_GRASS, x, y);
-		add_object(game, x, y, c);
-		// if (c == 'P')
-		// {
-		// 	path_to_window(game->mlx, PATH_SHIBA, x, y);
-		// 	game->player->x = x;
-		// 	game->player->y = y;
-		// }
-		// else if (c == 'C')
-		// {
-		// 	path_to_window(game->mlx, PATH_FOOD, x, y);
-		// 	game->food->x = x;
-		// 	game->food->y = y;
-		// }
-		// else if (c == 'E')
-		// {
-		// 	path_to_window(game->mlx, PATH_HOUSE, x, y);
-		// 	game->house->x = x;
-		// 	game->house->y = y;
-		// }
-	}
-	// printf("%d %d %d\n",game->player->cnt, game->food->cnt, game->house->cnt);
-	// if (game->player->cnt * game->food->cnt * game->house->cnt == 1)
-	// 	return (1);
-	// if (game->player->cnt * game->food->cnt * game->house->cnt != 1)
-	// 	ft_error("Something is missing!");
+	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		exit(0);
 }
 
 int32_t	main(int argc, char **argv)

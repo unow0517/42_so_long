@@ -2,11 +2,12 @@
 2D game with Open Source Library [MLX 42](https://github.com/codam-coding-college/MLX42/blob/master/docs/Textures.md)
 
 ## Must know
-* 32 bits per pixel in PNG (8bits for R,G,B,A)
-* Most of computer games refresh their frame so fast, so user input can be applied right away.
+* Most of computer games refresh their frame so fast (60times per sec), so user input can be applied right away.
+* Information such as player location, whether collectable is collected should be saved in a list.
 
 ## Challenges
 * Drawing background is feasible without struct, but moving Shiba is impossible without struct
+* Validate the Map input if the map has connected path from player to collectable and exit.
 <br/><br/>
 
 

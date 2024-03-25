@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:31:22 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/25 11:47:26 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/25 12:03:13 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define PATH_SHIBA "./img/shiba_128.png"
 # define PATH_HOUSE "./img/house_128.png"
 # define PATH_FOOD "./img/food_128.png"
+# define TILE_SIZE 128
 
 typedef struct s_player
 {
@@ -85,7 +86,6 @@ typedef struct s_game
 //SO_LONG.C
 void	ft_error(char *str);
 int		iswall(t_tile *map, int x, int y);
-// static void	my_keyhook(mlx_key_data_t keydata, void *param);
 char	*get_map_size(char **argv, t_game *game);
 t_game	*game_init(t_game *game);
 // int32_t	main(int argc, char **argv);
@@ -131,7 +131,14 @@ int		is_p_c_e_in_one_map(t_game *game);
 void	error_check(t_game *game);
 
 //FINISH_GAME.C
-void	finish_game(void *param);
-void	finish_game1(t_game *game);
+// void	finish_game(void *param);
+
+//MLX_HOOKS.C
+// static void	my_keyhook(mlx_key_data_t keydata, void *param);
+// static void	finish_game(void *param);
+void	mlx_hooks(t_game *game);
+
+//FREE_GAMES.C
+void	frees_game(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:58:25 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/25 10:41:04 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/25 12:03:04 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,7 @@ int	iswall(t_tile *map, int x, int y)
 	return (0);
 }
 
-static void	my_keyhook(mlx_key_data_t keydata, void *param)
-{
-	t_game		*game;
 
-	game = param;
-	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-		move_up(game);
-	else if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-		move_down(game);
-	else if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-		move_left(game);
-	else if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-		move_right(game);
-	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		exit(0);
-}
 
 char	*get_map_size(char **argv, t_game *game)
 {
@@ -101,10 +86,8 @@ int32_t	main(int argc, char **argv)
 	if (draw_ber(src, game) == -1)
 		ft_error("Error\nMap is not valid");
 	error_check(game);
-	finish_game(game);
-	mlx_key_hook(mlx, &my_keyhook, game);
-	if (mlx_loop_hook(mlx, &finish_game, game))
-		printf("SHIBA ESCAPED WITH THE FOOD!");
-	mlx_loop(mlx);
+	mlx_hooks(game);
+	frees_game(game);
+	system("leaks so_long");
 	return (EXIT_SUCCESS);
 }

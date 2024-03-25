@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:31:21 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/22 23:06:39 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/23 18:41:02 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int	end_wall_check(char *str, int len)
 int	map_verify(char *str, char *laststr, int len)
 {
 	if (!str && end_wall_check(laststr, len) == -1)
-		return (-1);
+		ft_error("Error\nOutest tile shoulde be always wall!");
 	if (str && mid_wall_check(str, len) == -1)
-		return (-1);
+		ft_error("Error\nOutest tile shoulde be always wall1!");
 	return (0);
 }
 
@@ -65,7 +65,6 @@ char	*map_verify_and_gnl(int src, char *str, int len)
 
 	lastgnl = str;
 	gnl = get_next_line(src);
-	if (map_verify(gnl, lastgnl, len) == -1)
-		return (0);
+	map_verify(gnl, lastgnl, len);
 	return (gnl);
 }

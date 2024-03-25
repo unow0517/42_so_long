@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:31:22 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/23 00:07:58 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/25 11:47:26 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define PATH_SHIBA "./img/shiba_128.png"
 # define PATH_HOUSE "./img/house_128.png"
 # define PATH_FOOD "./img/food_128.png"
-# define TILE_LEN 128
 
 typedef struct s_player
 {
@@ -33,6 +32,7 @@ typedef struct s_player
 	int			y;
 	int			movements;
 	int			cnt;
+	int			if_collect;
 }	t_player;
 
 enum e_tiletype
@@ -78,18 +78,26 @@ typedef struct s_game
 	t_food		*food;
 	t_house		*house;
 	t_tile		*grass_list;
+	int			width;
+	int			height;
 }	t_game;
 
 //SO_LONG.C
 void	ft_error(char *str);
-// static void	my_keyhook(mlx_key_data_t keydata, void *param);
 int		iswall(t_tile *map, int x, int y);
+// static void	my_keyhook(mlx_key_data_t keydata, void *param);
+char	*get_map_size(char **argv, t_game *game);
+t_game	*game_init(t_game *game);
 // int32_t	main(int argc, char **argv);
+
+//GAME_INIT.C
+t_game	*game_init(t_game *game);
 
 //DRAW_BER.C
 // static void	add_object(t_game *game, int x, int y, char c);
 // static void	render_tile(t_game *game, char c, int x, int y);
 // static void	render_and_list(arguments...);
+int		if_gnl_ok(char *gnl);
 int		draw_ber(int src, t_game *game);
 
 //MAP_FUNCTIONS.C
@@ -99,7 +107,8 @@ t_tile	*ft_map_lstlast(t_tile *lst);
 void	tile_to_map_list(char c, t_tile **list, int x, int y);
 int		path_to_window(mlx_t *mlx, char *path, int x, int y);
 
-//MOVES.C 
+//MOVES.C
+//static void	move(t_game *game, int next_x, int next_y);
 void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_left(t_game *game);
@@ -111,7 +120,6 @@ int		end_wall_check(char *str, int len);
 int		map_verify(char *str, char *laststr, int len);
 char	*map_verify_and_gnl(int src, char *str, int len);
 
-
 //CHECK_TILE.C
 // static int	is_in_list(int x, int y, t_tile *grass_list);
 // static int	is_coord_grass(int x, int y, t_tile *map);
@@ -119,9 +127,11 @@ char	*map_verify_and_gnl(int src, char *str, int len);
 void	flood_fill(int x, int y, t_game *game);
 int		is_p_c_e_in_one_map(t_game *game);
 
-//check_objects
-
 //DRAW_AND_ERROR_CHECK.C
-void	draw_and_error_check(t_game *game);
+void	error_check(t_game *game);
+
+//FINISH_GAME.C
+void	finish_game(void *param);
+void	finish_game1(t_game *game);
 
 #endif

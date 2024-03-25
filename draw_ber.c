@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:58:15 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/23 00:08:06 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/25 10:05:21 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,18 @@ static void	render_and_list(char *gnl, t_game *game, int next_x, int next_y)
 {
 	tile_to_map_list(*gnl, &game->map, next_x, next_y);
 	render_tile(game, *gnl, next_x, next_y);
+}
 
+int	if_gnl_ok(char *gnl)
+{
+	int	len;
+
+	len = 0;
+	if (gnl)
+		len = ft_strlen(gnl) - 1;
+	if (!gnl || end_wall_check(gnl, len) == -1)
+		return (0);
+	return (1);
 }
 
 int	draw_ber(int src, t_game *game)
@@ -63,10 +74,10 @@ int	draw_ber(int src, t_game *game)
 	int				len;
 
 	gnl = get_next_line(src);
-	if (gnl)
-		len = ft_strlen(gnl) - 1;
-	if (!gnl || end_wall_check(gnl, len) == -1)
+	if (!if_gnl_ok(gnl))
 		return (-1);
+	len = ft_strlen(gnl) - 1;
+	next_x = 0;
 	next_y = 0;
 	game->map = ft_map_lstnew(*gnl, 0, 0);
 	while (*gnl != 0)

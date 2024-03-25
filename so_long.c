@@ -6,13 +6,11 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:58:25 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/23 00:43:55 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/03/25 10:41:04 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
-#define WIDTH 1920
-#define HEIGHT 1080
 
 void	ft_error(char *str)
 {
@@ -58,6 +56,29 @@ static void	my_keyhook(mlx_key_data_t keydata, void *param)
 		exit(0);
 }
 
+char	*get_map_size(char **argv, t_game *game)
+{
+	char	*gnl;
+	int		len;
+	char	*whole_string;
+	int		src;
+	int		height;
+
+	height = 0;
+	whole_string = "";
+	src = open(argv[1], O_RDONLY);
+	gnl = get_next_line(src);
+	len = ft_strlen(gnl);
+	game->width = len - 1;
+	while (gnl)
+	{
+		gnl = get_next_line(src);
+		height++;
+	}
+	game->height = height;
+	return (0);
+}
+
 int32_t	main(int argc, char **argv)
 {
 	mlx_t		*mlx;
@@ -67,23 +88,23 @@ int32_t	main(int argc, char **argv)
 	if (argc != 2)
 		return (-1);
 	game = malloc(sizeof(t_game));
-	game->player = malloc(sizeof(t_player));
-	game->food = malloc(sizeof(t_food));
-	game->house = malloc(sizeof(t_house));
-	game->player->cnt = 0;
-	game->food->cnt = 0;
-	game->house->cnt = 0;
-	mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
+	if (!game)
+		ft_error("Error\nCannot initialize a game");
+	game = game_init(game);
+	get_map_size(argv, game);
+	src = open(argv[1], O_RDONLY);
+	mlx = mlx_init(128 * game->width, 128 * game->height, "Test", false);
 	if (!mlx)
 		ft_error("Error\nCannot initialize a map");
 	else
 		game->mlx = mlx;
-	src = open(argv[1], O_RDONLY);
 	if (draw_ber(src, game) == -1)
 		ft_error("Error\nMap is not valid");
-	draw_and_error_check(game);
+	error_check(game);
+	finish_game(game);
 	mlx_key_hook(mlx, &my_keyhook, game);
+	if (mlx_loop_hook(mlx, &finish_game, game))
+		printf("SHIBA ESCAPED WITH THE FOOD!");
 	mlx_loop(mlx);
 	return (EXIT_SUCCESS);
 }
-

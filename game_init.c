@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_and_error_check.c                             :+:      :+:    :+:   */
+/*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 23:16:39 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/23 01:03:39 by yowoo            ###   ########.fr       */
+/*   Created: 2024/03/25 10:06:16 by yowoo             #+#    #+#             */
+/*   Updated: 2024/03/25 10:18:25 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
 
-void	error_check(t_game *game)
+t_game	*game_init(t_game *game)
 {
-	is_p_c_e_in_one_map(game);
-	if (game->player->cnt * game->food->cnt * game->house->cnt != 1)
-		ft_error("Error\nOnly 1 Player, 1 Food, 1 House must be on the map!");
+	game->player = malloc(sizeof(t_player));
+	if (!game->player)
+		return (0);
+	game->food = malloc(sizeof(t_food));
+	if (!game->food)
+		return (0);
+	game->house = malloc(sizeof(t_house));
+	if (!game->house)
+		return (0);
+	game->player->cnt = 0;
+	game->player->movements = 0;
+	game->player->if_collect = 0;
+	game->food->cnt = 0;
+	game->house->cnt = 0;
+	game->width = 1;
+	game->height = 1;
+	return (game);
 }

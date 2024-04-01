@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:47:46 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/22 23:08:36 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/01 13:16:03 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,33 @@ void	tile_to_map_list(char c, t_tile **list, int x, int y)
 	tile->x = x;
 	tile->y = y;
 	ft_map_lstadd_back(list, tile);
+	//free(tile) -> seg fault.
 }
 
-int	path_to_window(mlx_t *mlx, char *path, int x, int y)
+int	img_to_window(mlx_t *mlx, mlx_texture_t *png, int x, int y)
 {
 	mlx_image_t		*img;
-	mlx_texture_t	*texture;
 
-	texture = mlx_load_png(path);
-	img = mlx_texture_to_image(mlx, texture);
-	if (!texture || !img)
+	img = mlx_texture_to_image(mlx, png);
+	if (!img)
 		return (-1);
 	mlx_image_to_window(mlx, img, x, y);
+	// free(img);
 	return (0);
 }
+
+// int	path_to_window(mlx_t *mlx, char *path, int x, int y)
+// {
+// 	mlx_image_t		*img;
+// 	mlx_texture_t	*texture;
+
+// 	img = 0;
+// 	// texture = mlx_load_png(path);
+// 	img = mlx_texture_to_image(mlx, texture);
+// 	if (!texture || !img)
+// 		return (-1);
+// 	mlx_image_to_window(mlx, img, x, y);
+// 	free(texture);
+// 	return (0);
+// }
 

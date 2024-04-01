@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:31:21 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/23 18:41:02 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/01 12:45:51 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	mid_wall_check(char *str, int len)
 	return (0);
 }
 
-int	end_wall_check(char *str, int len)
+int	northest_wall_check(char *str, int len)
 {
 	int	i;
 
@@ -49,22 +49,66 @@ int	end_wall_check(char *str, int len)
 	return (0);
 }
 
-int	map_verify(char *str, char *laststr, int len)
+int	end_wall_check_1(char *str, int len)
 {
-	if (!str && end_wall_check(laststr, len) == -1)
-		ft_error("Error\nOutest tile shoulde be always wall!");
-	if (str && mid_wall_check(str, len) == -1)
-		ft_error("Error\nOutest tile shoulde be always wall1!");
+	int	hasnl;
+	int	i;
+	int	isonlywall;
+
+	hasnl = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+		if (str[i] == '\n')
+			hasnl = 1;
+	}
+	if (hasnl == 1)
+		return (0);
+	i = 0;
+	while (hasnl == 0 && str[i] != '\0')
+	{
+		if (str[i] != '1')
+			isonlywall = 0;
+		i++;
+	}
+	if (i != len || isonlywall == 0)
+		return (-1);
 	return (0);
 }
 
-char	*map_verify_and_gnl(int src, char *str, int len)
+int	map_verify(char *str, int len)
 {
-	char	*lastgnl;
+	if (end_wall_check_1(str, len) == -1)
+		ft_error("Error\nSouthest tile shoulde be always wall!");
+	if (str && mid_wall_check(str, len) == -1)
+		ft_error("Error\nOutest border shoulde be always wall!");
+	return (0);
+}
+
+char	*map_verify_and_gnl(int src, int len)
+{
 	char	*gnl;
 
-	lastgnl = str;
 	gnl = get_next_line(src);
-	map_verify(gnl, lastgnl, len);
+	map_verify(gnl, len);
 	return (gnl);
 }
+
+// char	*map_verify_and_gnl(int src, char *str, int len)
+// {
+// 	char	*lastgnl;
+// 	char	*gnl;
+
+// 	char	*ptr;
+
+// 	lastgnl = str;
+// 	gnl = get_next_line(src);
+// 	ptr = gnl;
+// 	free(gnl);
+// 	// map_verify(gnl, lastgnl, len);
+// 	map_verify(ptr, lastgnl, len); // no leak
+// 	// free(gnl);
+// 	// return (gnl);
+// 	return (ptr);
+// }

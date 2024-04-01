@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:58:25 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/25 12:03:04 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/01 13:32:49 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ int	iswall(t_tile *map, int x, int y)
 	return (0);
 }
 
-
-
-char	*get_map_size(char **argv, t_game *game)
+void	get_map_size(char **argv, t_game *game)
 {
 	char	*gnl;
 	int		len;
@@ -57,11 +55,19 @@ char	*get_map_size(char **argv, t_game *game)
 	game->width = len - 1;
 	while (gnl)
 	{
+		free(gnl);
 		gnl = get_next_line(src);
 		height++;
 	}
 	game->height = height;
-	return (0);
+}
+static void load_pngs(t_game *game)
+{
+	game->player->png = mlx_load_png(PATH_SHIBA);
+	game->food->png = mlx_load_png(PATH_FOOD);
+	game->house->png = mlx_load_png(PATH_HOUSE);
+	game->grass->png = mlx_load_png(PATH_GRASS);
+	game->water->png = mlx_load_png(PATH_WATER);
 }
 
 int32_t	main(int argc, char **argv)
@@ -74,8 +80,12 @@ int32_t	main(int argc, char **argv)
 		return (-1);
 	game = malloc(sizeof(t_game));
 	if (!game)
+	{
+		free(game);
 		ft_error("Error\nCannot initialize a game");
+	}
 	game = game_init(game);
+	load_pngs(game);
 	get_map_size(argv, game);
 	src = open(argv[1], O_RDONLY);
 	mlx = mlx_init(128 * game->width, 128 * game->height, "Test", false);
@@ -84,10 +94,12 @@ int32_t	main(int argc, char **argv)
 	else
 		game->mlx = mlx;
 	if (draw_ber(src, game) == -1)
-		ft_error("Error\nMap is not valid");
-	error_check(game);
+		ft_error("Error\nnNorthest Border should be always 1");
 	mlx_hooks(game);
-	frees_game(game);
+	// close(src);
+	// error_check(game);
+	// mlx_terminate(game->mlx);
+	// frees_game(game);
 	system("leaks so_long");
 	return (EXIT_SUCCESS);
 }

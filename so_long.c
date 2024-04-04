@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:58:25 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/01 13:32:49 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/04 11:50:02 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ void	get_map_size(char **argv, t_game *game)
 	whole_string = "";
 	src = open(argv[1], O_RDONLY);
 	gnl = get_next_line(src);
+	if (!gnl)
+	{
+		free(gnl);
+		ft_error("Error\nCannot read the map");
+	}
 	len = ft_strlen(gnl);
 	game->width = len - 1;
 	while (gnl)
@@ -61,7 +66,8 @@ void	get_map_size(char **argv, t_game *game)
 	}
 	game->height = height;
 }
-static void load_pngs(t_game *game)
+
+static void	load_pngs(t_game *game)
 {
 	game->player->png = mlx_load_png(PATH_SHIBA);
 	game->food->png = mlx_load_png(PATH_FOOD);
@@ -96,9 +102,8 @@ int32_t	main(int argc, char **argv)
 	if (draw_ber(src, game) == -1)
 		ft_error("Error\nnNorthest Border should be always 1");
 	mlx_hooks(game);
-	// close(src);
-	// error_check(game);
-	// mlx_terminate(game->mlx);
+	close(src);
+	error_check(game);
 	// frees_game(game);
 	system("leaks so_long");
 	return (EXIT_SUCCESS);

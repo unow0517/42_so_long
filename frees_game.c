@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:00:52 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/01 13:20:35 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/04 11:48:07 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,24 @@ void	free_list(t_tile *head)
 
 void	frees_game(t_game *game)
 {
-	free_list(game->map);
-	free_list(game->grass_list);
-	free(game->player);
-	free(game->food);
-	free(game->house);
-	free(game->grass);
-	free(game->water);
-	free(game->mlx->window);
-	free(game->mlx->context);
-	free(game->mlx);
-	free(game);
-	printf("hello");
+	// free_list(game->map);
+	// free_list(game->grass_list);
+	// free(game->player->png);
+	// free(game->food->png);
+	// free(game->house->png);
+	// free(game->grass->png);
+	// free(game->water->png);
+	// free(game->player);
+	// free(game->food);
+	// free(game->house);
+	// free(game->grass);
+	// free(game->water);
+	mlx_terminate(game->mlx);
+	// free(game);
+
+
+	
+	// free(game->mlx->window);
+	// free(game->mlx->context);
+	// free(game->mlx);
 }

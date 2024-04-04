@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:47:46 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/01 13:16:03 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/04 10:35:54 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	img_to_window(mlx_t *mlx, mlx_texture_t *png, int x, int y)
 		return (-1);
 	mlx_image_to_window(mlx, img, x, y);
 	// free(img);
+	// free(png);
 	return (0);
 }
 

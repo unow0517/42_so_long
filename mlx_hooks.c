@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:53:21 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/01 13:39:01 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/04 11:52:00 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,11 @@ static void	my_keyhook(mlx_key_data_t keydata, void *param)
 		move_right(game);
 	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		frees_game(game);
+		// frees_game(game);
 		system("leaks so_long");
 		exit(0);
 	}
 }
-
-// static void	udpate(t_game *game)
-// {
-// 	draw_ber(game);
-// 	finish_game(game);
-// }
 
 static void	finish_game(void *param)
 {
@@ -55,7 +49,7 @@ static void	finish_game(void *param)
 	if (player->x == house->x && player->y == house->y)
 		if (player->if_collect == 1)
 		{
-			frees_game(game);
+			// frees_game(game);
 			system("leaks so_long");
 			exit(0);
 		}

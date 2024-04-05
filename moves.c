@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:59:59 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 20:18:43 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 21:21:22 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	move(t_game *game, int next_x, int next_y)
 	t_house		*house;
 	mlx_t		*mlx;
 	t_tile		*food;
-	
+
 	player = game->player;
 	map = game->map;
 	house = game->house;
@@ -32,10 +32,13 @@ static void	move(t_game *game, int next_x, int next_y)
 		ft_printf("%d\n", player->movements + 1);
 		(player->movements)++;
 	}
-	food = find_tile_in_list(player->x, player->y, game->food_list);
-	if (food)
+	food = find_tile_in_list(next_x, next_y, game->food_list);
+	if (food && food->visited == 0)
+	{
+		printf("%d %d", food->x, food->y);
 		game->player->collect_cnt++;
-
+		food->visited = 1;
+	}
 }
 
 void	move_up(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:06:16 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 20:27:58 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 20:41:58 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_game	*game_init(t_game *game)
 	game->food_list = malloc(sizeof(t_tile));
 	if (!game->food_list)
 		return (0);
+	game->food_list->visited = 0;
 	game->food_list->x = 0;				
 	game->food_list->y = 0;				
 	game->food_list->next = 0;				

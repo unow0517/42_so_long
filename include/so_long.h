@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:31:22 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 20:29:04 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 21:21:34 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ enum e_tiletype
 typedef struct s_tile
 {
 	enum e_tiletype	type;
+	int				visited;
 	int				x;
 	int				y;
 	struct s_tile	*next;
@@ -124,6 +125,8 @@ void		draw_ber(int src, t_game *game);
 //MAP_FUNCTIONS.C
 t_tile		*ft_map_lstnew(char c, int x, int y);
 void		ft_map_lstadd_back(t_tile **lst, t_tile *new);
+// void		ft_map_lstadd_back_foodlist(t_foodlist **lst, t_foodlist *new);
+// void		ft_map_lstadd_back(void **lst, void *new);
 t_tile		*ft_map_lstlast(t_tile *lst);
 void		tile_to_map_list(char c, t_tile **list, int x, int y);
 int			img_to_window(mlx_t *mlx, mlx_texture_t *png, int x, int y);
@@ -150,6 +153,7 @@ void		flood_fill(int x, int y, t_game *game);
 //ERROR_CHECK.C
 int			is_in_list(int x, int y, t_tile *grass_list);
 t_tile		*find_tile_in_list(int x, int y, t_tile *list);
+// t_foodlist	*find_tile_in_foodlist(int x, int y, t_foodlist *list);
 //static int	is_p_c_e_in_one_map(t_game *game);
 void		error_check(t_game *game);
 

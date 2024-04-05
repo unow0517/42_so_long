@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:53:21 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 20:22:46 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 21:18:48 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ static void	finish_game(void *param)
 	player = game->player;
 	// food = game->food;
 	house = game->house;
+	printf("cltcnt %d\n",player->collect_cnt);
 	if (player->x == house->x && player->y == house->y)
 	{
 		printf("fdcnt: %d, player->collect: %d\n", game->food_cnt, player->collect_cnt);
-		if (player->collect_cnt == game->food_cnt)
+		if (player->collect_cnt >= game->food_cnt)
 		{
 			ft_printf("SHIBA ESCAPED WITH THE FOOD!");
 			system("leaks so_long");

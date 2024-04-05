@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:47:46 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 19:40:40 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 21:01:32 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_tile	*ft_map_lstnew(char c, int x, int y)
 		first_node->type = WALL;
 	else
 		first_node->type = GRASS;
+	first_node->visited = 0;
 	first_node->x = x;
 	first_node->y = y;
 	first_node->next = 0;
@@ -40,6 +41,18 @@ void	ft_map_lstadd_back(t_tile **lst, t_tile *new)
 		ft_map_lstlast(*lst)->next = new;
 	}
 }
+
+// void	ft_map_lstadd_back_foodlist(t_tile **lst, t_tile *new)
+// {
+// 	if (!*lst || !lst)
+// 	{
+// 		*lst = new;
+// 	}
+// 	else
+// 	{
+// 		ft_map_lstlast(*lst)->next = new;
+// 	}
+// }
 
 t_tile	*ft_map_lstlast(t_tile *lst)
 {
@@ -77,11 +90,3 @@ int	img_to_window(mlx_t *mlx, mlx_texture_t *png, int x, int y)
 	mlx_image_to_window(mlx, img, x, y);
 	return (0);
 }
-
-// void	ft_lstdelone(t_list *lst)
-// {
-// 	if (lst != 0)
-// 		del(lst->content);
-// 	free (lst);
-// }
-

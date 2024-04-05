@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:16:39 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 20:26:38 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 20:52:54 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,29 @@ t_tile	*find_tile_in_list(int x, int y, t_tile *list)
 	return (0);
 }
 
+t_tile	*find_tile_in_foodlist(int x, int y, t_tile *list)
+{
+	t_tile	*ptr;
+
+	ptr = list;
+	if (!ptr)
+		return (0);
+	while (ptr)
+	{
+		if (ptr->x == x && ptr->y == y)
+			return (ptr);
+		ptr = ptr->next;
+	}
+	return (0);
+}
+
 static int	is_p_c_e_in_one_map(t_game *game)
 {
 	t_player	*player;
 	int			p;
 	int			f;
 	int			h;
+	t_tile		*foodlist_ptr;
 
 	game->grass_list = malloc(sizeof(t_tile));
 	game->grass_list->x = 0;
@@ -58,8 +75,14 @@ static int	is_p_c_e_in_one_map(t_game *game)
 	player = game->player;
 	flood_fill(player->x, player->y, game);
 	p = is_in_list(player->x, player->y, game->grass_list);
-	f = is_in_list(game->food->x, game->food->y, game->grass_list);
+	foodlist_ptr = game->food_list;
+	while (foodlist_ptr)
+	{
+		f = is_in_list(foodlist_ptr->x, foodlist_ptr->y, game->grass_list);
+		foodlist_ptr = foodlist_ptr->next;
+	}
 	h = is_in_list(game->house->x, game->house->y, game->grass_list);
+	printf("%d %d %d", p, f, h);
 	if (p + f + h != 3)
 		ft_error("Error\nPlayer, Food, House should be connected on the map!");
 	return (0);

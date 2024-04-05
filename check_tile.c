@@ -6,13 +6,11 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 23:08:43 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 16:28:22 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 22:32:40 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
-
-
 
 static int	is_coord_grass(int x, int y, t_tile *map)
 {

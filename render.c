@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:19:04 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 20:56:01 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 22:43:07 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ void	add_object(t_game *game, int x, int y, char c)
 void	render_tile(t_game *game, char c, int x, int y)
 {
 	if (c == '1')
-	{
 		img_to_window(game->mlx, game->water_png, x, y);
-	}
 	else
 	{
 		img_to_window(game->mlx, game->grass_png, x, y);
@@ -58,4 +56,13 @@ void	render_and_list(char c, t_game *game, int next_x, int next_y)
 {
 	tile_to_map_list(c, &game->map, next_x, next_y);
 	render_tile(game, c, next_x, next_y);
+}
+
+void	load_pngs(t_game *game)
+{
+	game->player_png = mlx_load_png(PATH_SHIBA);
+	game->food_png = mlx_load_png(PATH_FOOD);
+	game->house_png = mlx_load_png(PATH_HOUSE);
+	game->grass_png = mlx_load_png(PATH_GRASS);
+	game->water_png = mlx_load_png(PATH_WATER);
 }

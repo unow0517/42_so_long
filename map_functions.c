@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:47:46 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 21:01:32 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 22:43:57 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,6 @@ void	ft_map_lstadd_back(t_tile **lst, t_tile *new)
 		ft_map_lstlast(*lst)->next = new;
 	}
 }
-
-// void	ft_map_lstadd_back_foodlist(t_tile **lst, t_tile *new)
-// {
-// 	if (!*lst || !lst)
-// 	{
-// 		*lst = new;
-// 	}
-// 	else
-// 	{
-// 		ft_map_lstlast(*lst)->next = new;
-// 	}
-// }
 
 t_tile	*ft_map_lstlast(t_tile *lst)
 {

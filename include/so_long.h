@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:31:22 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 21:21:34 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 22:45:45 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,41 +50,28 @@ typedef struct s_tile
 	struct s_tile	*next;
 }	t_tile;
 
-typedef struct s_food
+typedef struct s_object
 {
 	int				x;
 	int				y;
-}	t_food;
+}	t_object;
 
-typedef struct s_house
-{
-	int				x;
-	int				y;
-}	t_house;
-
-typedef struct s_grass
-{
-	int				x;
-	int				y;
-	struct s_grass	*next;
-}	t_grass;
-
-typedef struct s_water
+typedef struct s_objectlist
 {
 	int				x;
 	int				y;
 	struct s_water	*next;
-}	t_water;
+}	t_objectlist;
 
 typedef struct s_game
 {
 	mlx_t			*mlx;
 	t_player		*player;
 	t_tile			*map;
-	t_food			*food;
-	t_grass			*grass;
-	t_water			*water;
-	t_house			*house;
+	t_object		*food;
+	t_objectlist	*grass;
+	t_objectlist	*water;
+	t_object		*house;
 	t_tile			*grass_list;
 	t_tile			*food_list;
 	int				player_cnt;
@@ -103,18 +90,22 @@ typedef struct s_game
 //SO_LONG.C
 void		ft_error(char *str);
 int			iswall(t_tile *map, int x, int y);
-void		get_map_size(char **argv, t_game *game);
+//static void	get_map_size(char **argv, t_game *game);
 //static void	if_not_game(t_game *game)
-//int32_t	main(int argc, char **argv)
+//int32_t		main(int argc, char **argv)
 
 //GAME_INIT.C
+//static void	player_init(t_game *game)
+//static void	object_init(t_game *game)
+//static void	objectlist_init(t_game *game)
+//static void	foodlist_init(t_game *game)
 t_game		*game_init(t_game *game);
-void		load_pngs(t_game *game);
 
 //RENDER.C
 void		add_object(t_game *game, int x, int y, char c);
 void		render_tile(t_game *game, char c, int x, int y);
 void		render_and_list(char c, t_game *game, int next_x, int next_y);
+void		load_pngs(t_game *game);
 
 //DRAW_BER.C
 int			if_first_gnl_ok(char *gnl);
@@ -125,8 +116,6 @@ void		draw_ber(int src, t_game *game);
 //MAP_FUNCTIONS.C
 t_tile		*ft_map_lstnew(char c, int x, int y);
 void		ft_map_lstadd_back(t_tile **lst, t_tile *new);
-// void		ft_map_lstadd_back_foodlist(t_foodlist **lst, t_foodlist *new);
-// void		ft_map_lstadd_back(void **lst, void *new);
 t_tile		*ft_map_lstlast(t_tile *lst);
 void		tile_to_map_list(char c, t_tile **list, int x, int y);
 int			img_to_window(mlx_t *mlx, mlx_texture_t *png, int x, int y);
@@ -141,8 +130,8 @@ void		move_right(t_game *game);
 //MAP_VERIFY.C
 // static int	mid_wall_check(char *str, int len);
 int			northest_wall_check(char *str, int len);
-int			end_wall_check_1(char *str, int len);
-int			map_verify(char *str, int len);
+//static int	end_wall_check(char *str, int len);
+//static int	map_verify(char *str, int len);
 char		*map_verify_and_gnl(int src, int len);
 
 //CHECK_TILE.C
@@ -153,7 +142,6 @@ void		flood_fill(int x, int y, t_game *game);
 //ERROR_CHECK.C
 int			is_in_list(int x, int y, t_tile *grass_list);
 t_tile		*find_tile_in_list(int x, int y, t_tile *list);
-// t_foodlist	*find_tile_in_foodlist(int x, int y, t_foodlist *list);
 //static int	is_p_c_e_in_one_map(t_game *game);
 void		error_check(t_game *game);
 

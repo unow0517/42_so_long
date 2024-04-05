@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:58:25 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 20:25:17 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 22:33:48 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	iswall(t_tile *map, int x, int y)
 	return (0);
 }
 
-void	get_map_size(char **argv, t_game *game)
+static void	get_map_size(char **argv, t_game *game)
 {
 	char	*gnl;
 	int		len;
@@ -99,6 +99,5 @@ int32_t	main(int argc, char **argv)
 	error_check(game);
 	mlx_hooks(game);
 	close(src);
-	system("leaks so_long");
 	return (EXIT_SUCCESS);
 }

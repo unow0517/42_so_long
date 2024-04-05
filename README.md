@@ -7,7 +7,7 @@
 
 ## Challenges
 * Drawing background is feasible without struct, but moving Shiba is impossible without struct
-* Validate the Map input if the map has connected path from player to collectable and exit.
+* Validate the Map input if the map has connected path from player to collectable and exit. -> solved with **Flood Fill algorithm**
 <br/><br/>
 
 

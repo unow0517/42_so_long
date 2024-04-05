@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:06:16 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/01 12:32:28 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 20:27:58 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,28 @@ t_game	*game_init(t_game *game)
 		return (0);
 	game->grass = malloc(sizeof(t_grass));
 	if (!game->grass)
-		return (0);				
-	game->player->cnt = 0;
+		return (0);
+	game->food_list = malloc(sizeof(t_tile));
+	if (!game->food_list)
+		return (0);
+	game->food_list->x = 0;				
+	game->food_list->y = 0;				
+	game->food_list->next = 0;				
+	game->player_cnt = 0;
 	game->player->movements = 0;
-	game->player->if_collect = 0;
-	game->food->cnt = 0;
-	game->house->cnt = 0;
+	game->player->collect_cnt = 0;
+	game->food_cnt = 0;
+	game->house_cnt = 0;
 	game->width = 1;
 	game->height = 1;
 	return (game);
+}
+
+void	load_pngs(t_game *game)
+{
+	game->player_png = mlx_load_png(PATH_SHIBA);
+	game->food_png = mlx_load_png(PATH_FOOD);
+	game->house_png = mlx_load_png(PATH_HOUSE);
+	game->grass_png = mlx_load_png(PATH_GRASS);
+	game->water_png = mlx_load_png(PATH_WATER);
 }

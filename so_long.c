@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:58:25 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/04 11:50:02 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 20:25:17 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ void	get_map_size(char **argv, t_game *game)
 	game->height = height;
 }
 
-static void	load_pngs(t_game *game)
+static void	if_not_game(t_game *game)
 {
-	game->player->png = mlx_load_png(PATH_SHIBA);
-	game->food->png = mlx_load_png(PATH_FOOD);
-	game->house->png = mlx_load_png(PATH_HOUSE);
-	game->grass->png = mlx_load_png(PATH_GRASS);
-	game->water->png = mlx_load_png(PATH_WATER);
+	if (!game)
+	{
+		free(game);
+		ft_error("Error\nCannot initialize a game");
+	}
 }
 
 int32_t	main(int argc, char **argv)
@@ -85,11 +85,7 @@ int32_t	main(int argc, char **argv)
 	if (argc != 2)
 		return (-1);
 	game = malloc(sizeof(t_game));
-	if (!game)
-	{
-		free(game);
-		ft_error("Error\nCannot initialize a game");
-	}
+	if_not_game(game);
 	game = game_init(game);
 	load_pngs(game);
 	get_map_size(argv, game);
@@ -99,12 +95,10 @@ int32_t	main(int argc, char **argv)
 		ft_error("Error\nCannot initialize a map");
 	else
 		game->mlx = mlx;
-	if (draw_ber(src, game) == -1)
-		ft_error("Error\nnNorthest Border should be always 1");
+	draw_ber(src, game);
+	error_check(game);
 	mlx_hooks(game);
 	close(src);
-	error_check(game);
-	// frees_game(game);
 	system("leaks so_long");
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:53:21 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/04 11:52:00 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/05 20:22:46 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	my_keyhook(mlx_key_data_t keydata, void *param)
 		move_right(game);
 	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		// frees_game(game);
+		ft_printf("GAME SHUT DOWN!");
 		system("leaks so_long");
 		exit(0);
 	}
@@ -37,22 +37,23 @@ static void	finish_game(void *param)
 {
 	t_game		*game;
 	t_player	*player;
-	t_food		*food;
+	// t_food		*food;
 	t_house		*house;
 
 	game = param;
 	player = game->player;
-	food = game->food;
+	// food = game->food;
 	house = game->house;
-	if (player->x == food->x && player->y == food->y)
-		player->if_collect = 1;
 	if (player->x == house->x && player->y == house->y)
-		if (player->if_collect == 1)
+	{
+		printf("fdcnt: %d, player->collect: %d\n", game->food_cnt, player->collect_cnt);
+		if (player->collect_cnt == game->food_cnt)
 		{
-			// frees_game(game);
+			ft_printf("SHIBA ESCAPED WITH THE FOOD!");
 			system("leaks so_long");
 			exit(0);
 		}
+	}
 }
 
 void	mlx_hooks(t_game *game)
@@ -61,7 +62,6 @@ void	mlx_hooks(t_game *game)
 
 	mlx = game->mlx;
 	mlx_key_hook(mlx, &my_keyhook, game);
-	if (mlx_loop_hook(mlx, &finish_game, game))
-		printf("SHIBA ESCAPED WITH THE FOOD!");
+	mlx_loop_hook(mlx, &finish_game, game);
 	mlx_loop(mlx);
 }

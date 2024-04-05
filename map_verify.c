@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:31:21 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/01 12:45:51 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/04 12:15:47 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,21 +94,3 @@ char	*map_verify_and_gnl(int src, int len)
 	map_verify(gnl, len);
 	return (gnl);
 }
-
-// char	*map_verify_and_gnl(int src, char *str, int len)
-// {
-// 	char	*lastgnl;
-// 	char	*gnl;
-
-// 	char	*ptr;
-
-// 	lastgnl = str;
-// 	gnl = get_next_line(src);
-// 	ptr = gnl;
-// 	free(gnl);
-// 	// map_verify(gnl, lastgnl, len);
-// 	map_verify(ptr, lastgnl, len); // no leak
-// 	// free(gnl);
-// 	// return (gnl);
-// 	return (ptr);
-// }

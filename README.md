@@ -21,6 +21,9 @@ Open Source Library [MLX 42](https://github.com/codam-coding-college/MLX42/blob/
 * Using struct to store information about an Object. Shiba, Tile, House, Food in my case. why struct? to save information of an object. A struct can group related variables under one name, much like how an object in OOP(Object-Oriented-Programming) has properties.
 <br/>
 
+## How To Run
+* `git clone 
+<br/>
 ## How To Play
 * `w` `s` `a` `d` => move muscle shiba
 * collect all the foods

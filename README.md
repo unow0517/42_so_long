@@ -28,7 +28,7 @@ Open Source Library [MLX 42](https://github.com/codam-coding-college/MLX42/blob/
 4. `./so_long ./map.ber`
 
 You can edit "map.ber" file to create your own map, following the rule that 1 is water, 0 is grass, P is shiba, C is food, E is house.
-<br/>
+<br/><br/>
 
 ## How To Play
 * `w` `s` `a` `d` => move muscle shiba

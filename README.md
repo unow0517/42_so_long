@@ -1,5 +1,5 @@
 # so_long
-To write a program which takes a map input as a variable, verifying if the map is valid<br/>
+To write a program which takes a map as an input variable, verifying if the map is valid<br/>
 (if 1 player, 1 house, more than 0 food exist, etc.) and making 2D game with the map.
 <br/><br/>
 ![](https://github.com/unow0517/so_long/blob/master/playing.gif)<br/><br/>

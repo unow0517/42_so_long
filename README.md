@@ -22,8 +22,14 @@ Open Source Library [MLX 42](https://github.com/codam-coding-college/MLX42/blob/
 <br/>
 
 ## How To Run
-* `git clone 
+1. `git clone https://github.com/unow0517/so_long.git`
+2. `cd so_long`
+3. `make all`
+4. `./so_long ./map.ber`
+
+You can edit "map.ber" to create your own map, following the rule that 1 is water, 0 is grass, P is shiba, C is food, E is house.
 <br/>
+
 ## How To Play
 * `w` `s` `a` `d` => move muscle shiba
 * collect all the foods

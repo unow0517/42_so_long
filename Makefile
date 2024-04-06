@@ -6,7 +6,7 @@
 #    By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 20:23:52 by yowoo             #+#    #+#              #
-#    Updated: 2024/03/28 15:36:12 by yowoo            ###   ########.fr        #
+#    Updated: 2024/04/05 22:55:53 by yowoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,12 @@ CC = gcc
 SRC = $(wildcard *.c GET_NEXT_LINE/*.c Libft/*.c ft_printf/*.c)
 OBJ = $(SRC:.c=.o)
 RM = rm -rf
+CC_FLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	$(CC)  $(CC_FLAGS) -Imlx -c $< -o $@
 
 $(NAME): $(OBJ)
 	@cd MLX42 && cmake -B build && cmake --build build -j4

@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 09:17:13 by yowoo             #+#    #+#             */
-/*   Updated: 2024/03/21 13:16:23 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/06 12:23:17 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,6 @@ char	*get_next_line(int fd)
 // 	// ft_substr(ptr,0,3);
 // 	return (0);
 // }
-
 
 // ft_substr in first_piece does not return new pointer address, 
 // so malloc + ft_memcpy is used instead.

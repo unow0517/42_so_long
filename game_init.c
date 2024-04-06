@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:06:16 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 22:41:40 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/06 11:40:16 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static void	foodlist_init(t_game *game)
 	if (!game->food_list)
 		ft_error("Error\n error allocating memory for game");
 	game->food_list->visited = 0;
-	game->food_list->x = 0;				
-	game->food_list->y = 0;				
-	game->food_list->next = 0;				
+	game->food_list->x = 0;
+	game->food_list->y = 0;
+	game->food_list->next = 0;
 }
 
 t_game	*game_init(t_game *game)

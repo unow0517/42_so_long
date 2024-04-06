@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:51:25 by yowoo             #+#    #+#             */
-/*   Updated: 2023/11/17 19:46:10 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/06 12:23:02 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ft_printf_p(unsigned long ptr)
 	res = hex_len_u(ptr);
 	return (res + 2);
 }
-
 
 //address == 107(base 10)
 //output = 0x6b(base 16)

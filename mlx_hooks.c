@@ -6,7 +6,7 @@
 /*   By: yowoo <yowoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:53:21 by yowoo             #+#    #+#             */
-/*   Updated: 2024/04/05 22:42:07 by yowoo            ###   ########.fr       */
+/*   Updated: 2024/04/06 12:22:49 by yowoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	my_keyhook(mlx_key_data_t keydata, void *param)
 	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		ft_printf("GAME SHUT DOWN!");
-		system("leaks so_long");
 		exit(0);
 	}
 }
@@ -47,7 +46,6 @@ static void	finish_game(void *param)
 		if (player->collect_cnt >= game->food_cnt)
 		{
 			ft_printf("SHIBA ESCAPED WITH THE FOOD!");
-			system("leaks so_long");
 			exit(0);
 		}
 	}

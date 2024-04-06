@@ -33,4 +33,4 @@ You can edit "map.ber" file to create your own map, following the rule that 1 is
 ## How To Play
 * `w` `s` `a` `d` => move muscle shiba
 * collect all the foods
-* reach house and chill
+* reach house and the game is over

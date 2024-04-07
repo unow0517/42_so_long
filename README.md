@@ -22,8 +22,8 @@ Open Source Library [MLX 42](https://github.com/codam-coding-college/MLX42/blob/
 <br/>
 
 ## How To Run
-1. `git clone https://github.com/unow0517/so_long.git`
-2. `cd so_long`
+1. `git clone https://github.com/unow0517/42_so_long.git`
+2. `cd 42_so_long`
 3. `make all`
 4. `./so_long ./map.ber`
 
